@@ -17,16 +17,16 @@ public class EquationGenerator
     {
         rm = new Random();
     }
-    public ArrayList<Integer> makeEq(){
-        ArrayList<Integer> eqTerms = new ArrayList();
-        eqTerms.add((rm.nextInt(2)+1));
-        eqTerms.add((rm.nextInt(41)-20));
-        eqTerms.add((rm.nextInt(41)-20));
+    public ArrayList<Double> makeEq(){
+        ArrayList<Double> eqTerms = new ArrayList();
+        eqTerms.add((double)(rm.nextInt(2)+1));
+        eqTerms.add((double)(rm.nextInt(41)-20));
+        eqTerms.add((double)(rm.nextInt(41)-20));
         
         //determine answer
         double rExp = eqTerms.get(2) - eqTerms.get(1);
-        double answer = rExp/((double)eqTerms.get(0));
-        eqTerms.add((int)answer);
+        double answer = rExp/eqTerms.get(0);
+        eqTerms.add(answer);
         
         return eqTerms;
     }

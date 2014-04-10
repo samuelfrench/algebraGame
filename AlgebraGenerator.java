@@ -19,7 +19,7 @@ public class AlgebraGenerator
     public static void main(String[] args)
     {
         EquationGenerator eg = new EquationGenerator();
-        ArrayList<ArrayList<Integer>> eqList = eqCreation(eg,10);
+        ArrayList<ArrayList<Double>> eqList = eqCreation(eg,10);
         eqListPrompt(eqList);
     }
     
@@ -31,7 +31,7 @@ public class AlgebraGenerator
      * @param eqList ArrayList List of equations
      * @return int Number of answers correct
      */
-    public static int eqListPrompt(ArrayList<ArrayList<Integer>> eqList)
+    public static int eqListPrompt(ArrayList<ArrayList<Double>> eqList)
     {
         int numberCorrect = 0;
         int totalQuestions = eqList.size();
@@ -57,17 +57,26 @@ public class AlgebraGenerator
      */
     public static void printResults(int numberCorrect, int totalQuestions)
     {
-        double percentage = (double)totalQuestions/(double)numberCorrect;
+        double percentage = (double)numberCorrect/(double)totalQuestions;
         System.out.println("You got " + numberCorrect + " correct answers out of " + totalQuestions + ".");
-        System.out.println("Score: " + percentage + "%");
+        System.out.println("Score: " + Double.toString(percentage).substring(0, 4) + "%");
     }
     
-    public static boolean eqPrompt(Scanner sc, ArrayList<Integer> eq)
+    /**
+     * eqPrompt
+     * 
+     * Prompt an individual equation
+     * 
+     * @param sc
+     * @param eq
+     * @return 
+     */
+    public static boolean eqPrompt(Scanner sc, ArrayList<Double> eq)
     {
         System.out.println(eq.get(0).toString() + "x + " + eq.get(1).toString() + " = " + eq.get(2).toString());
         System.out.println("Solve for x: ");
         
-        if(eq.get(3).toString().equals(sc.nextLine()))
+        if(eq.get(3) == sc.nextDouble())
         {
             System.out.println("Correct!");
             return true;
@@ -85,7 +94,7 @@ public class AlgebraGenerator
      * @param quantity int number of equations to generate
      * @return 
      */
-    public static ArrayList<ArrayList<Integer>> eqCreation(int quantity)
+    public static ArrayList<ArrayList<Double>> eqCreation(int quantity)
     {
         EquationGenerator eg = new EquationGenerator();
         return eqCreation(eg,quantity);
@@ -100,9 +109,9 @@ public class AlgebraGenerator
      * @param quantity int The number of equations to generate
      * @return ArrayList<ArrayList<Integer>>
      */
-    public static ArrayList<ArrayList<Integer>> eqCreation(EquationGenerator eg, int quantity)
+    public static ArrayList<ArrayList<Double>> eqCreation(EquationGenerator eg, int quantity)
     {
-        ArrayList<ArrayList<Integer>> eqBuff = new ArrayList();
+        ArrayList<ArrayList<Double>> eqBuff = new ArrayList();
         for (int x = 0; x < quantity; x++)
         {
             eqBuff.add(eg.makeEq());
