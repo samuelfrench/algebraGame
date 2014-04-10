@@ -1,4 +1,3 @@
-
 package algebragenerator;
 
 import java.util.ArrayList;
@@ -66,7 +65,7 @@ public class AlgebraGenerator
     public static boolean eqPrompt(Scanner sc, ArrayList<Integer> eq)
     {
         System.out.println(eq.get(0).toString() + "x + " + eq.get(1).toString() + " = " + eq.get(2).toString());
-        System.out.println("Solve for x: " + eq.get(3));
+        System.out.println("Solve for x: ");
         
         if(eq.get(3).toString().equals(sc.nextLine()))
         {
